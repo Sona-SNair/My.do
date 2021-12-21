@@ -1,0 +1,84 @@
+<!-- <div class="row">
+    <h3 style="color:white;">Register</h3>
+    
+  <form   >
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email address</label>
+        <input  type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputName1" class="form-label">Full Name</label>
+        <input   type="name" class="form-control" id="exampleInputName1" aria-describedby="nameHelp">
+        <div id="nameHelp" class="form-text">We'll never share your name with anyone else.</div>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputNumber1" class="form-label">Mobile Number</label>
+        <input  type="text" class="form-control" id="exampleInputNumber1" aria-describedby="numberHelp">
+        
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input   type="password" class="form-control" id="exampleInputPassword1">
+      </div>
+      <div class="mb-3 form-check">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+      </div>
+      <button  type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  
+  </div> -->
+<div class="container">
+    <div class="row mx-auto my-5">
+        <div class="col-md-12">
+
+            <div class="">
+                <div class="text-center mb-4">
+                    <h1>SignUp</h1>
+                    <h6>Register yourself by filling below details!</h6>
+                </div>
+                <form [formGroup]="signUpForm">
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Full Name</label>
+                        <input type="text" formControlName="fullname" class="form-control" id="exampleInputPassword1" placeholder="Full Name">
+                        <span class="text-danger" *ngIf="signUpForm.controls['fullname'].dirty && signUpForm.hasError('required','fullname')">*Full name is required</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Mobile Number</label>
+                        <input type="text" formControlName="mobile" class="form-control" id="exampleInputPassword1" placeholder="Mobile Number">
+                        <span class="text-danger" *ngIf="signUpForm.controls['mobile'].dirty && signUpForm.hasError('required','mobile')">*Mobile number is required</span>
+                        <span></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input type="email" formControlName="username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small><br>
+                        <span class="text-danger" *ngIf="signUpForm.controls['username'].dirty && signUpForm.hasError('required','username')">*Email address is required</span>
+                        <span class="text-danger" *ngIf="signUpForm.hasError('email','username')">*Email is Invalid</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input type="password" formControlName="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                        <span class="text-danger" *ngIf="signUpForm.controls['password'].dirty && signUpForm.hasError('required','password')">*Password is required</span>
+                    </div>
+                    <!-- <div class="form-group mt-2">
+                        <label for="exampleInputPassword1">User Type</label>
+                        <select formControlName="usertype" class="form-select" aria-label="Default select example">
+                            <option selected value="" >Select User Type</option>
+                            <option value="Admin">Admin</option>
+                            <option value="Employee">Employee</option>
+                            
+                          </select>
+                        <span class="text-danger" *ngIf="signUpForm.controls['usertype'].dirty && signUpForm.hasError('required','usertype')">*User type is required</span>
+                    </div> -->
+
+                    <button type="submit" [disabled]="!signUpForm.valid" (click)="signUp()" class="btn btn-primary mt-3">Sign Up</button>
+                </form>
+                <a routerLink='/login' style="float:right;color:#fff">Alreay Have account? Click to Login!</a>
+
+            </div>
+
+        </div>
+    </div>
+</div>

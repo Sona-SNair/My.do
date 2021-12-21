@@ -1,0 +1,22 @@
+.row {
+    width: 500px;
+    padding: 40px;
+    background: hsla(205, 46%, 30%, 1);
+    background: linear-gradient( 90deg, hsl(205deg 6% 23%) 0%, hsl(260deg 4% 15%)100%);
+    border-radius: 10px;
+}
+
+label {
+    color: #fff;
+}
+
+h1,
+h6 {
+    color: #fff;
+}
+
+@media only screen and (max-width: 600px) {
+    .row {
+        width: 95%;
+    }
+}

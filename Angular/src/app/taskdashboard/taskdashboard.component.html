@@ -1,0 +1,110 @@
+<!--<nav class="navbar navbar-light bg-primary">
+    <div class="container-fluid">
+        <h1>MyDayApplication</h1>-->
+<div class="d-flex">
+    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Tasks</button>
+</div>
+
+
+<div class="table-responsive">
+
+    <table class="table">
+        <thead>
+            <tr>
+                <!--<th scope="col">Task No</th>-->
+                <th scope="col">Task Number</th>
+                <th scope="col">Task Name</th>
+                <th scope="col">Description</th>
+                <th scope="col">Date</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let row of taskData">
+                <td>{{row.taskNo}}</td>
+                <td>{{row.taskName}}</td>
+                <td>{{row.taskDescription}}</td>
+                <td>{{row.date | date:'medium'}}</td>
+                <td>
+                    <button (click)="onEdit(row)" type="button" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Edit" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn"><i class="fa fa-pencil-square-o fa-2x text-danger" aria-hidden="true"></i></button>
+                    <button (click)="deleteTask(row)" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Mark as Complete" class="btn"><i class="fa fa-check-square-o fa-2x text-success" aria-hidden="true"></i></button>
+
+                </td>
+            </tr>
+            <tr *ngIf="taskData.length==0">
+                <td class="text-center" colspan="5">
+                    <h3>NO TASK</h3>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add Your Task</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+
+                <form [formGroup]="formValue">
+                    <!-- <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Date</label>
+                <input type="email" formControlName="taskno" class="form-control" >
+                <div id="emailHelp" class="form-text"></div>
+
+              <div>
+                <ejs-calendar id=calendar [value]='value' [min]='minDate' [max]='maxDate' > </ejs-calendar >
+              </div>
+              </div> -->
+                    <!-- <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Task No</label>
+                  <input type="email" formControlName="taskno" class="form-control" >
+                  <div id="emailHelp" class="form-text"></div>
+                </div> -->
+
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Task Name</label>
+                        <input type="text" formControlName="taskname" class="form-control">
+                        <div id="emailHelp" class="form-text"></div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Description</label>
+                        <textarea type="text" formControlName="taskdescription" class="form-control"></textarea>
+                        <div id="emailHelp" class="form-text"></div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Date</label>
+                        <input type="datetime-local" formControlName="taskdate" class="form-control">
+                        <div id="emailHelp" class="form-text"></div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Users to Assign</label>
+                        <select formControlName="userToAssign" class="form-select" aria-label="Default select example">
+                            <option selected value="">Select User</option>
+                            <option *ngFor="let user of allUsers" [ngValue]="user.id" ><span *ngIf="user.id!=currentUser">{{user.fullName}}</span> <span *ngIf="user.id==currentUser">Self</span></option>
+
+                          </select>
+                    </div>
+                    <!-- <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Date</label>
+                    <input type="email"  formControlName="taskdate" class="form-control" >
+                    <div id="emailHelp" class="form-text"></div>
+                  </div> -->
+
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="cancel" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" (click)="postTaskDetails()" class="btn btn-primary">Add</button>
+                <button type="button" (click)="updateTaskDetails()" class="btn btn-primary">Update</button>
+            </div>
+        </div>
+    </div>
+</div>

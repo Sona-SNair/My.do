@@ -1,0 +1,47 @@
+<!-- <header>
+    <h1 class="logo">My Day</h1>
+    <nav>
+        <ul class="nav_links">
+            <li><a [routerLink]="['/taskdashboard']" routerLinkActive="active">Home</a></li>
+            <li><a [routerLink]="['register']" routerLinkActive="active">Register</a></li>
+
+            <li><a [routerLink]="['login']" routerLinkActive="active">Login</a></li>
+        </ul>
+    </nav>
+    <a class="cta" [routerLink]="['/aboutus']" routerLinkActive="active"><button>About Us</button></a>
+</header> -->
+
+<nav class="navbar navbar-dark bg-dark navbar-expand-lg">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <h1 class="logo">My Day</h1>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" routerLink="taskdashboard">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="register">Register</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="aboutus">About Us</a>
+                </li>
+                <li *ngIf="!loggedInUser" class="nav-item">
+                    <a class="nav-link" routerLink="login">Login</a>
+                </li>
+                <li *ngIf="loggedInUser" class="nav-item">
+                    <a class="nav-link" routerLink="login">Logout</a>
+                </li>
+
+            </ul>
+            <div class="d-flex">
+                <h3 class="text-light">Welcome {{loggedInUser}}!!</h3>
+            </div>
+        </div>
+    </div>
+</nav>
